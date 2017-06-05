@@ -1,5 +1,5 @@
 # script-libraries
-JavaScript libraries compatible with the Runscope API Test Script Engine
+JavaScript libraries compatible with the [Runscope API Test Script Engine](https://www.runscope.com/docs/api-testing/scripts).
 
 
 # Available libraries
