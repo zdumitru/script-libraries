@@ -18,10 +18,10 @@ for (var header in awsObj.headers) {
 ```
 
 - [Usage](#usage)
-  - [1. Adding aws4.js as a custom library to your Runscope account](#1.-adding-aws4.js-as-a-custom-library-to-your-runscope-account)
-  - [2. Activating library in your test's environment settings](#2.-activating-library-in-your-test's-environment-settings)
-  - [3. Editing the test step pre-request script](#3.-editing-the-test-step-pre-request-script)
-- [Examples](#examples)
+  - [1. Adding aws4.js as a custom library to your Runscope account](#1-adding-aws4js-as-a-custom-library-to-your-runscope-account)
+  - [2. Activating library in your test's environment settings](#2-activating-library-in-your-tests-environment-settings)
+  - [3. Editing the test step pre-request script](#3-editing-the-test-step-pre-request-script)
+- [Examples](#pre-request-scripts-examples)
   - [S3 - GET Bucket](#s3---get-bucket)
   - [S3 - GET Bucket with querystring](#s3---get-bucket-with-querystring)
   - [S3 - GET Object](#s3---get-object)
@@ -38,19 +38,19 @@ There are 3 steps you need to follow to use this library:
 
 ### 1. Adding aws4.js as a custom library to your Runscope account
 
-First, download the [aws4.js](./aws4.js) file to your computer. Next, go to your Runscope account, click on your account's profile on the top-right and select "Script Library".
+First, download the [aws4.js](./aws4.js) file to your computer. Next, go to your Runscope account, click on your account's profile on the top-right and select "Script Library":
 
-[Add screenshot]
+![Runscope dashboard showing the account dropdown with the "Script Library" option highlighted](./screenshots/1-runscope-script-link.png?raw=true)
 
-Then, next to the "Upload A Library" section, click on "Choose File", select the aws4.js file you previously downloaded, and then click on "Upload Script". You should see the new library in the "Existing Libraries" section, next to any other custom libraries you have previously uploaded.
+Then, next to the "Upload A Library" section, click on "Choose File", select the aws4.js file you previously downloaded, and then click on "Upload Script". You should see the new library in the "Existing Libraries" section, next to any other custom libraries you have previously uploaded:
 
-[Add screenshot]
+![Runscope script library page showing the "Existing Libraries" section with the aws4.js library highlighted](./screenshots/2-runscope-script-library.png?raw=true)
 
 ### 2. Activating library in your test's environment settings
 
-Next, create a new test, or go to an existing test where you want to add a test step to one of AWS APIs and click on "Edit". Open your environment settings, and select "Script Libraries" on the left-hand side menu. You should see a list of all custom script libraries in your account, including the one we just uploaded. Toggle the aws4.js library on.
+Next, create a new test, or go to an existing test where you want to add a test step to one of AWS APIs and click on "Edit". Open your environment settings, and select "Script Libraries" on the left-hand side menu. You should see a list of all custom script libraries in your account, including the one we just uploaded. Toggle the aws4.js library on:
 
-[Add screenshot]
+![Runscope API test edit page showing the environment settings, with the "Script Libraries" option selected on the left-hand side menu, and the aws4.js library toggled on](./screenshots/3-runscope-environment-library.png?raw=true)
 
 ### 3. Editing the test step pre-request script
 
