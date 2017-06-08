@@ -1,0 +1,101 @@
+{
+  "trigger_url": "https://api.runscope.com/radar/bb5ff31b-9ffc-44a2-9fe7-a2563892fef3/trigger", 
+  "name": "Signature Version 4", 
+  "version": "1.0", 
+  "exported_at": 1496896256, 
+  "steps": [
+    {
+      "url": "http://s3.amazonaws.com", 
+      "variables": [], 
+      "args": {}, 
+      "step_type": "request", 
+      "auth": {}, 
+      "fragment": "", 
+      "note": "", 
+      "headers": {}, 
+      "assertions": [
+        {
+          "comparison": "equal_number", 
+          "value": 200, 
+          "source": "response_status"
+        }
+      ], 
+      "scripts": [], 
+      "multipart_form": [], 
+      "before_scripts": [
+        "var opts = {service: 's3', path: request.path};\nvar awsObj = aws4.sign(opts, {accessKeyId: variables.get(\"AWS_ACCESS_KEY_ID\"), secretAccessKey: variables.get(\"AWS_SECRET_ACCESS_KEY\")});\n\nfor (var header in awsObj.headers) {\n    request.headers[header] = awsObj.headers[header];\n}"
+      ], 
+      "data": "", 
+      "method": "GET"
+    }, 
+    {
+      "url": "http://s3.amazonaws.com/hitchikers-guide-to-the-galaxy?list-type=2&delimiter=f", 
+      "variables": [], 
+      "multipart_form": [], 
+      "step_type": "request", 
+      "auth": {}, 
+      "fragment": "", 
+      "note": "", 
+      "headers": {}, 
+      "assertions": [
+        {
+          "comparison": "equal_number", 
+          "value": 200, 
+          "source": "response_status"
+        }
+      ], 
+      "scripts": [], 
+      "before_scripts": [
+        "var splitURL = request.url.split(/\\/+/g);\nvar fullPath = \"/\"+splitURL[splitURL.length-1];\nlog(fullPath);\n\nvar opts = {service: 's3', path: fullPath};\nvar awsObj = aws4.sign(opts, {accessKeyId: variables.get(\"AWS_ACCESS_KEY_ID\"), secretAccessKey: variables.get(\"AWS_SECRET_ACCESS_KEY\")});\n\nlog(awsObj);\n\nfor (var header in awsObj.headers) {\n    request.headers[header] = awsObj.headers[header];\n}"
+      ], 
+      "method": "GET"
+    }, 
+    {
+      "headers": {}, 
+      "url": "http://s3.amazonaws.com/hitchikers-guide-to-the-galaxy/dont-panic.txt", 
+      "variables": [], 
+      "multipart_form": [], 
+      "step_type": "request", 
+      "auth": {}, 
+      "note": "", 
+      "fragment": "", 
+      "assertions": [
+        {
+          "comparison": "equal_number", 
+          "value": 200, 
+          "source": "response_status"
+        }
+      ], 
+      "scripts": [], 
+      "before_scripts": [
+        "var opts = {service: 's3', path: request.path};\nvar awsObj = aws4.sign(opts, {accessKeyId: variables.get(\"AWS_ACCESS_KEY_ID\"), secretAccessKey: variables.get(\"AWS_SECRET_ACCESS_KEY\")});\n\nfor (var header in awsObj.headers) {\n    request.headers[header] = awsObj.headers[header];\n}"
+      ], 
+      "method": "GET"
+    }, 
+    {
+      "body": "Test Body", 
+      "form": {}, 
+      "headers": {}, 
+      "url": "http://s3.amazonaws.com/hitchikers-guide-to-the-galaxy/file.txt", 
+      "variables": [], 
+      "multipart_form": [], 
+      "step_type": "request", 
+      "auth": {}, 
+      "note": "", 
+      "fragment": "", 
+      "assertions": [
+        {
+          "comparison": "equal_number", 
+          "value": 200, 
+          "source": "response_status"
+        }
+      ], 
+      "scripts": [], 
+      "before_scripts": [
+        "var opts = {service: 's3', path: request.path, method: request.method, body: request.body};\nvar awsObj = aws4.sign(opts, {accessKeyId: variables.get(\"AWS_ACCESS_KEY_ID\"), secretAccessKey: variables.get(\"AWS_SECRET_ACCESS_KEY\")});\nlog(awsObj);\nfor (var header in awsObj.headers) {\n    request.headers[header] = awsObj.headers[header];\n}\nlog(request.headers);"
+      ], 
+      "method": "PUT"
+    }
+  ], 
+  "description": ""
+}
