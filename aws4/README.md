@@ -25,7 +25,8 @@ for (var header in awsObj.headers) {
   - [S3 - GET Bucket](#s3---get-bucket)
   - [S3 - GET Bucket with querystring](#s3---get-bucket-with-querystring)
   - [S3 - GET Object](#s3---get-object)
-  - [S3 - PUT Object](#s3---put-object)
+  - [S3 - PUT Object](#cloudwatch---setalarmstate)
+  - [Cloudwatch - SetAlarmState](#s3---put-object)
 - [Sample Runscope Test](#sample-runscope-test)
 
 ## Usage
@@ -129,6 +130,36 @@ Select "+Add Body" and add `Test Body`.
 var opts = {service: 's3', path: request.path, method: request.method, body: request.body};
 var awsObj = aws4.sign(opts, {accessKeyId: variables.get("AWS_ACCESS_KEY_ID"), secretAccessKey: variables.get("AWS_SECRET_ACCESS_KEY")});
 
+for (var header in awsObj.headers) {
+    request.headers[header] = awsObj.headers[header];
+}
+```
+
+### Cloudwatch - SetAlarmState
+```
+// Build the path from the query strings defined in the test (library could probably do this)
+// API docs for Cloudwatch: http://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/Welcome.html
+
+/*
+    Required params for SetAlarmState is:
+    * AlarmName
+    * StateReason
+    * StateValue
+    * Action (The operation name from the API docs, in this case SetAlarmState)
+    * Version (The API version to use. Defaults to an old version, so check the doc link for an appropriate version string. Note: The SetAlarmState action is not defined in the default API version.)
+*/
+
+var path = '/?';
+for (var key in request.params) {
+    path += request.params[key].name + "=" + request.params[key].value + "&"; // Notice that there is currently no support for array values
+}
+
+// The service name for cloudwatch is 'monitoring'
+// Change region if necessary. No region means default region
+var opts = {service: 'monitoring', path: path, region: 'eu-west-1', method: request.method};
+var awsObj = aws4.sign(opts, {accessKeyId: variables.get("AWS_ACCESS_KEY_ID"), secretAccessKey: variables.get("AWS_SECRET_ACCESS_KEY")});
+
+// Paste the headers on to the request
 for (var header in awsObj.headers) {
     request.headers[header] = awsObj.headers[header];
 }
