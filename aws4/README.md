@@ -167,4 +167,4 @@ for (var header in awsObj.headers) {
 
 ## Sample Runscope Test
 
-You can [import](https://www.runscope.com/docs/api-testing/importing#radar-import) the [awsv4-runscope-sample.json](./awsv4.runscope-sample.json) file as a new test in one of your buckets to have the exact same requests as the examples included here. Just make sure to enable the custom library in your environment settings, include the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables, and include your bucket name in any GET requests before running the tests.
+You can [import](https://www.runscope.com/docs/api-testing/importing#radar-import) the [awsv4-runscope-sample.json](./awsv4-runscope-sample.json) file as a new test in one of your buckets to have the exact same requests as the examples included here. Just make sure to enable the custom library in your environment settings, include the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables, and include your bucket name in any GET requests before running the tests.
