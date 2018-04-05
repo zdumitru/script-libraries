@@ -25,8 +25,8 @@ for (var header in awsObj.headers) {
   - [S3 - GET Bucket](#s3---get-bucket)
   - [S3 - GET Bucket with querystring](#s3---get-bucket-with-querystring)
   - [S3 - GET Object](#s3---get-object)
-  - [S3 - PUT Object](#cloudwatch---setalarmstate)
-  - [Cloudwatch - SetAlarmState](#s3---put-object)
+  - [S3 - PUT Object](#s3---put-object)
+  - [Cloudwatch - SetAlarmState](#cloudwatch---setalarmstate)
 - [Sample Runscope Test](#sample-runscope-test)
 
 ## Usage
